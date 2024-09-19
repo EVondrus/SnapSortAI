@@ -1,4 +1,4 @@
-# CIFAR-10 Image Classification Project
+# SNAPSORT AI
 
 **A Data Science and Machine Learning project developed as part of a course in Predictive Analytics, my final project at Code Institute.**
 
@@ -6,13 +6,12 @@
 
 ## Project Overview
 
-A client working in e-commerce wants to explore how machine learning can help automate the process of categorizing product images. Currently, this task is manual, time-consuming, and prone to errors.
+A client in e-commerce seeks a machine learning solution to automate product image categorization, currently performed manually. The project follows two phases:
 
-The client is seeking a two-phase approach: 
 1. **Dataset Analysis**: Understanding the CIFAR-10 dataset.
-2. **Model Development**: Creating an image classification model for automation.
+2. **Model Development**: Creating an image classification model to automate the process.
 
-The CIFAR-10 dataset contains 60,000 images across 10 distinct categories (e.g., animals, vehicles, and objects). The goal is to provide valuable insights and build a basic model for automation, with future scalability in mind.
+The CIFAR-10 dataset consists of 60,000 images across 10 categories, and the goal is to automate categorization with a scalable model for future use.
 
 ---
 
@@ -20,10 +19,11 @@ The CIFAR-10 dataset contains 60,000 images across 10 distinct categories (e.g.,
 
 - **Source**: [CIFAR-10 dataset from Kaggle](https://www.kaggle.com/competitions/cifar-10).
 - **Image Size**: 32x32 pixels in RGB format.
-- **Total Images**: A subset of 5,000 images for efficient training and diverse category representation.
-- **Categories**: 10 categories (e.g., airplanes, cars, birds, frogs, ships).
+- **Subset**: 5,000 images for training.
+- **Categories**: 10 classes (e.g., airplanes, cars, birds, frogs).
 
-This subset balances training efficiency and performance while keeping the repository size manageable. 
+This subset balances training efficiency and performance while adhering to GitHub's file size limits.
+
 
 **TODO**:
 - Add example images with labels.
@@ -37,12 +37,12 @@ This subset balances training efficiency and performance while keeping the repos
    - Analyze the CIFAR-10 dataset to understand image distribution, patterns, and potential challenges.
 
 2. **Model Development**:
-   - Develop a machine learning model for classifying images into 10 categories to reduce manual effort and improve accuracy.
+   - Develop an image classification model to automate categorization.
 
 3. **Performance Evaluation**:
-   - Evaluate the model’s performance focusing on accuracy and processing speed to ensure practical real-world application.
+   - Assess model performance in terms of accuracy and efficiency.
 
-[Back to top](#cifar-10-image-classification-project)
+[Back to top](#SNAPSORT-AI)
 
 ---
 
@@ -52,17 +52,18 @@ This subset balances training efficiency and performance while keeping the repos
   - Exploratory Data Analysis (EDA) will reveal patterns and challenges that will guide preprocessing and model development.
 
 - **Hypothesis 2**: 
-  - A basic Convolutional Neural Network (CNN) will achieve at least 70% classification accuracy, providing a baseline for automation.
+  - A basic CNN will achieve at least 70% classification accuracy.
 
 - **Hypothesis 3**: 
   - Data augmentation (e.g., rotating, flipping, zooming) will enhance model accuracy by at least 5%.
 
 ### Validation Process
 
-- **Accuracy**: Measures overall correctness of predictions.
+- **Accuracy**: Overall model correctness.
 - **Precision & Recall**: Precision indicates correct predictions, while recall shows the number of true positives.
 - **F1-Score**: Combines precision and recall into a single metric for balanced evaluation.
-- **Confusion Matrix**: Visualizes classification errors and misclassifications.
+- **Confusion Matrix**: Visualizes misclassifications.
+
 - **Comparison**: Models with and without data augmentation and regularization will be compared.
 
 ### Success Metrics
@@ -74,55 +75,36 @@ This subset balances training efficiency and performance while keeping the repos
 
 Validating these hypotheses will confirm the efficacy of combining CNNs with advanced techniques and guide future model improvements.
 
-[Back to top](#cifar-10-image-classification-project)
+[Back to top](#snapsort-ai)
 
 ---
 
 ## Rationale for Mapping Business Requirements to Data Visualizations and ML Tasks
 
 ### 1. Dataset Exploration
-- **Requirement**: Analyze the CIFAR-10 dataset.
-- **Rationale**: Effective preprocessing and model training rely on understanding data distribution and imbalances.
+- **Business Requirement:** Analyze the CIFAR-10 dataset.
+- **ML Task:** Perform Exploratory Data Analysis (EDA) to uncover data patterns, including class distribution and image quality.
+- **Rationale**: Understanding the dataset's structure, class balance, and potential challenges is crucial for model training and performance. Data visualizations like class distribution plots, and sample image grids help identify any biases or inconsistencies early in the process.
 
 ### 2. Model Development
-- **Requirement**: Build and optimize a CNN.
-- **Rationale**: A well-tuned CNN automates categorization efficiently and can be enhanced with data augmentation and regularization.
+- **Business Requirement:** Build and optimize a Convolutional Neural Network (CNN) for image classification.
+- **ML Task:** Develop, train, and fine-tune the CNN architecture using TensorFlow and Keras.
+- **Rationale:** A well-optimized CNN model is central to automating the image classification process. The choice of layers, activation functions, and regularization techniques, as well as the inclusion of data augmentation, improves the model’s accuracy and robustness.
 
 ### 3. Performance Metrics
-- **Requirement**: Achieve high accuracy.
-- **Rationale**: Metrics like precision, recall, and F1 score will guide model evaluation and refinement.
+- **Business Requirement:** Achieve high model accuracy.
+- **ML Task:** Evaluate the model using accuracy, precision, recall, F1 score, and a confusion matrix.
+- **Rationale:** These metrics provide a comprehensive understanding of the model’s performance. Visualizations like accuracy/loss graphs and confusion matrices make it easier to track progress and identify areas for improvement.
 
 ### 4. Interpretability
-- **Requirement**: Provide insights into model predictions.
-- **Rationale**: Visualizations (e.g., confusion matrices) help users understand and trust the model’s decisions.
+- **Business Requirement:** Offer insights into the model’s predictions.
+- **ML Task:** Generate interpretable visualizations like confusion matrices, class activation maps (CAM), and predicted vs. actual results.
+- **Rationale:** Visualization tools increase transparency, allowing clients to understand how the model makes decisions. This builds trust in the AI system, ensuring that predictions are not just accurate but also explainable.
 
 ### 5. Efficiency
-- **Requirement**: Ensure efficient training and inference.
-- **Rationale**: Efficient models support real-time applications and scalability.
-
----
-
-## ML Business Case
-
-### 1. Dataset Exploration
-- **Task**: Perform EDA and visualize class distribution.
-- **Business Case**: Informs preprocessing and improves model performance.
-
-### 2. Model Development
-- **Task**: Develop and train a CNN with data augmentation.
-- **Business Case**: Automates product categorization, benefiting client operations.
-
-### 3. High Accuracy
-- **Task**: Evaluate model performance.
-- **Business Case**: Reduces manual errors and meets client expectations.
-
-### 4. Interpretability
-- **Task**: Generate visualizations for predictions.
-- **Business Case**: Enhances understanding and trust in the model.
-
-### 5. Efficiency
-- **Task**: Optimize training and inference.
-- **Business Case**: Ensures practical deployment and scalability.
+- **Business Requirement:** Ensure the model is efficient in training and inference.
+- **ML Task:** Implement early stopping, checkpointing, and model optimizations to reduce training time while maintaining accuracy.
+- **Rationale:** Efficient models ensure scalability and practical use in real-time applications. Time series plots of training and validation loss/accuracy help stakeholders monitor the model’s learning efficiency over time.
 
 ---
 
@@ -130,45 +112,22 @@ Validating these hypotheses will confirm the efficacy of combining CNNs with adv
 
 ### CNN Architecture
 - **Input**: 32x32 RGB images.
-- **Layers**: Convolutional layers with ReLU, max-pooling, dense layers with softmax.
-- **Regularization**: Dropout and batch normalization.
+- **Layers**: Convolutional layers with ReLU activation, followed by max-pooling and dense layers.
+- **Regularization**: Dropout and batch normalization to prevent overfitting.
 
-### Image Preprocessing
-- **Rescaling**: Normalize images to [0, 1].
-- **Data Augmentation**: Apply rotations, flips, and zooms.
+### Preprocessing
+- **Rescaling**: Images normalized to [0, 1].
+- **Data Augmentation**: Rotations, flips, and zooms applied for training robustness.
 
-### Model Compilation
+### Compilation & Training
 - **Optimizer**: Adam.
 - **Loss Function**: Categorical cross-entropy.
 - **Metrics**: Accuracy.
+- **Training**: Early stopping and checkpointing mechanisms employed.
 
-### Training and Validation
-- **Approach**: Train with early stopping and checkpointing. Evaluate on a test set.
+> **Model Diagram**: ![Model Development Diagram](link-to-diagram-image)
 
-### Model Development Diagram
-![Model Development Diagram](link-to-diagram-image)
-
-### Technical Setup
-
-#### CNN Architecture
-- **Input Layer**: 32x32 RGB images.
-- **Convolutional Layers**: Extract spatial features with ReLU activation, followed by max-pooling.
-- **Dense Layers**: Fully connected layers with a softmax output.
-- **Regularization**: Dropout and batch normalization.
-
-#### Image Preprocessing
-- **Rescaling**: Normalize images to 0-1.
-- **Data Augmentation**: Enhance robustness with rotations, flips, and zooms.
-
-#### Model Compilation
-- **Optimizer**: Adam.
-- **Loss Function**: Categorical cross-entropy.
-- **Metrics**: Accuracy.
-
-#### Training and Validation
-- **Approach**: Use early stopping and checkpointing. Evaluate on a separate test set.
-
-[Back to top](#cifar-10-image-classification-project)
+[Back to top](#snapsort-ai)
 
 ---
 
@@ -208,7 +167,7 @@ Allows users to upload images and make live predictions:
 Discusses the hypothesis and points out considerations for using the model:
 <img src="" width="80%" height="80%"><br></details>
 
-[Back to top](#cifar-10-image-classification-project)
+[Back to top](#)
 
 ---
 
@@ -242,7 +201,7 @@ The Kanban board outlines key user stories and deadlines to ensure the project m
 
 All user stories have been successfully implemented, and the project is complete.
 
-[Back to top](#cifar-10-image-classification-project)
+[Back to top](#SNAPSORT-AI)
 
 
 ---
@@ -251,7 +210,7 @@ All user stories have been successfully implemented, and the project is complete
 
 There are no known unfixed bugs at this time.
 
-[Back to top](#cifar-10-image-classification-project)
+[Back to top](#SNAPSORT-AI)
 
 ---
 
@@ -285,14 +244,15 @@ There are no known unfixed bugs at this time.
 - **Streamlit**: Used to create an interactive dashboard for the client, providing a user-friendly interface for visualizing model performance and making predictions.
 - **Kaggle**: The source of the CIFAR-10 dataset, which serves as the basis for training and evaluating the image classification model.
 
-[Back to top](#cifar-10-image-classification-project)
+[Back to top](#SNAPSORT-AI)
 
 
 ---
 
 ## Credits 
 
-Thank you to Code Institute for providing the deployment-ready template and a comprehensive README structure.
+Special thanks to Code Institute for the deployment template and Kaggle for the dataset.
+
 
 ### Content 
 
@@ -300,7 +260,7 @@ Thank you to Code Institute for providing the deployment-ready template and a co
 
 ### Code
 
-- Parts of the code from Code Institute's walkthrough project were utilized and adapted for this project.
+- Part of the code is adapted from Code Institute’s walkthrough project.
 
 ---
 
