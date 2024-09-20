@@ -192,7 +192,14 @@ Validating these hypotheses will confirm the efficacy of combining CNNs with adv
 
   <br>
   
-  ![Object Identifier dashboard](docs/identifier_dash.png)
+  ![Object Identifier dashboard](docs/identification_dash.png)
+
+  <br>
+  Example of an analysis report:
+
+  <br>
+
+  ![Analysis report](docs/analysis_report.png)
 </details>
 <br>
 
