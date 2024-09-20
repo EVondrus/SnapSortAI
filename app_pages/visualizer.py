@@ -15,7 +15,7 @@ def page_visualizer_body():
 
     st.header('**Image study**')
 
-    st.info('''Business requirement 1: Help clients understand how the model\
+    st.info('**Business requirement 1:** Help clients understand how the model\
     interprets images and provide insights into distinctive features.''')
 
     version = 'v1'
