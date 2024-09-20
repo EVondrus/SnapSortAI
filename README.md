@@ -24,10 +24,8 @@ The CIFAR-10 dataset consists of 60,000 images across 10 categories, and the goa
 
 This subset balances training efficiency and performance while adhering to GitHub's file size limits.
 
-
-**TODO**:
-- Add example images with labels.
-- Include total file size to confirm it’s under GitHub's limit.
+![Dataset images with labels](docs/img_label_collage.png)
+![Cifar10 subset](docs/distribution_plot.png)
 
 ---
 
@@ -141,33 +139,64 @@ Validating these hypotheses will confirm the efficacy of combining CNNs with adv
 4. **Image Classifier**: Upload images and receive real-time predictions.
 5. **Hypothesis and Results**: Discussion of hypothesis, results, and future work.
 
-The Streamlit Dashboard includes:
-<details><summary>1st Page - Project Summary</summary>
-<br><br>
-This page provides a summary of the project, objectives, and business requirements:
-<img src="" width="80%" height="80%"><br></details>
-<br><br>
-<details><summary>2nd Page - Data Visualizer</summary>
-<br><br>
-Shows the type of data and preprocessing steps:
-<img src="" width="80%" height="80%"><br></details>
-<br><br>
-<details><summary>3rd Page - Model Performance</summary>
-<br><br>
-Details the model's performance metrics:
-<img src="" width="80%" height="80%"><br></details>
-<br><br>
-<details><summary>4th Page - Image Classifier</summary>
-<br><br>
-Allows users to upload images and make live predictions:
-<img src="" width="80%" height="80%"><br></details>
-<br><br>
-<details><summary>5th Page - Hypothesis and Results</summary>
-<br><br>
-Discusses the hypothesis and points out considerations for using the model:
-<img src="" width="80%" height="80%"><br></details>
+# The Streamlit Dashboard includes:
 
-[Back to top](#)
+<details>
+  <summary>1st Page - Project Summary</summary>
+  <br>
+  This page provides a summary of the project, objectives, and business requirements:
+  
+  <br>
+  
+  ![Summary dashboard](docs/summary_dash.png)
+</details>
+<br>
+
+<details>
+  <summary>2nd Page - Hypothesis and Results</summary>
+  <br>
+  Discusses the hypothesis and points out considerations for using the model:
+
+<br>
+
+  ![Hypotheses dashboard](docs/hypothesis_dash.png)
+</details>
+<br>
+
+<details>
+  <summary>3rd Page - Data Visualizer</summary>
+  <br>
+  Shows the type of data and preprocessing steps:
+
+  <br>
+  
+  ![Visualizer dashboard](docs/visualizer_dash.png)
+</details>
+<br>
+
+<details>
+  <summary>4th Page - Model Performance</summary>
+  <br>
+  Details the model's performance metrics:
+
+  <br>
+  
+  ![Ml performance dashboard](docs/performance_dash.png)
+</details>
+<br>
+
+<details>
+  <summary>5th Page - Image Classifier</summary>
+  <br>
+  Allows users to upload images and make live predictions:
+
+  <br>
+  
+  ![Object Identifier dashboard](docs/identifier_dash.png)
+</details>
+<br>
+
+[Back to top](#SNAPSORT-AI)
 
 ---
 
@@ -218,16 +247,30 @@ There are no known unfixed bugs at this time.
 
 ### Heroku
 
-* The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
+* The App live link is: https://snapsortai-6a51de21efef.herokuapp.com/
 * Set the runtime.txt Python version to a [Heroku-20](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
 * The project was deployed to Heroku using the following steps.
 
 1. Log in to Heroku and create an App
-2. At the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click now the button Open App on the top of the page to access your App.
-6. If the slug size is too large then add large files not required for the app to the .slugignore file.
+2. Log into Heroku CLI in IDE workspace terminal using the bash command: *heroku login -i* and enter user credentials (You'll need your Heroku API key)
+3. Set the app's stack to heroku-20 using the bash command: *heroku stack:set heroku-20* for compatibility with the Python 3.8.14 version used for this project
+4. At the Deploy tab in Heroku, select GitHub as the deployment method.
+5. Select your repository name and click Search. Once it is found, click Connect.
+6. Select the branch you want to deploy, then click Deploy Branch.
+7. The deployment process should happen smoothly if all deployment files are fully functional.
+8. Click the button "Open App" on the top of the page to access your App.
+9. If the slug size is too large then add large files not required for the app to the .slugignore file.
+
+### Forking the GitHub Project
+To make a copy of the GitHub [repository](https://github.com/EVondrus/SnapSortAI) to use on your own account, one can fork the repository by doing as follows:
+
+On the page for the repository, go to the 'Fork' button on the top right of the page, and click it to create a copy of the repository which should then be on your own GitHub account.
+
+### Making a Local Clone
+On the page for the repository, click the 'Code' button
+To clone the repository using HTTPS, copy the HTTPS URL provided there
+Open your CLI application of choice and change the current working directory to the location where you want the cloned directory to be made.
+Type git clone, and then paste the previously copied URL to create the clone
 
 ---
 
@@ -243,11 +286,72 @@ There are no known unfixed bugs at this time.
 - **Joblib**: Facilitates saving and loading the trained machine learning model, enabling quick deployment without the need for retraining.
 - **Streamlit**: Used to create an interactive dashboard for the client, providing a user-friendly interface for visualizing model performance and making predictions.
 - **Kaggle**: The source of the CIFAR-10 dataset, which serves as the basis for training and evaluating the image classification model.
+- **PIL Image**: Used for image manipulation
 
 [Back to top](#SNAPSORT-AI)
 
 
 ---
+
+## TESTING
+
+### Manual Testing
+
+#### User Story Testing
+
+**Business Requirement 1: Data Visualization**  
+1. As a client, I want an interactive dashboard for easy data visualization.
+
+| Feature                 | Action                            | Expected Result                                      | Actual Result              |
+|-------------------------|-----------------------------------|-----------------------------------------------------|----------------------------|
+| Navigation bar          | Selecting buttons in the side Menu| Selected page displayed with correct information     | Functions as expected       |
+
+**Data Visualizer Page**  
+- As a client, I can view visual representations of the dataset and preprocessing steps.
+
+| Feature                    | Action                              | Expected Result                                   | Actual Result               |
+|----------------------------|-------------------------------------|-------------------------------------------------- |-----------------------------|
+| Dataset summary            | Viewing the dataset summary         | Summary of dataset displayed correctly            | Functions as expected       |
+| Class distribution graph   | Clicking on the graph option        | Class distribution graph is rendered              | Functions as expected       |
+
+**Model Performance Page**  
+- As a client, I want to see the model’s performance metrics.
+
+| Feature                    | Action                              | Expected Result                                   | Actual Result               |
+|----------------------------|-------------------------------------|-------------------------------------------------- |-----------------------------|
+| Accuracy graph             | Clicking on the accuracy graph      | Accuracy over epochs graph is displayed           | Functions as expected       |
+| Confusion matrix           | Clicking on the confusion matrix    | Confusion matrix visualized correctly             | Functions as expected       |
+
+---
+
+**Business Requirement 2: Classification**  
+
+**Image Classifier Page**  
+- As a client, I can upload images to the dashboard so that I can get predictions.
+
+| Feature                    | Action                              | Expected Result                                   | Actual Result               |
+|----------------------------|-------------------------------------|-------------------------------------------------- |-----------------------------|
+| File uploader              | Uploading image files via Browse    | Prediction of the category displayed              | Functions as expected       |
+
+- As a client, I want to save model predictions in a timestamped CSV file.
+
+| Feature                    | Action                              | Expected Result                                  | Actual Result               |
+|----------------------------|-------------------------------------|--------------------------------------------------|-----------------------------|
+| Download Report link       | Clicking on the download link       | A CSV file with timestamps and prediction details is saved on the client's machine | Functions as expected        |
+
+---
+
+**Business Requirement 3: Performance Evaluation**  
+
+**Model Evaluation Page**  
+- As a client, I want to assess the model's performance metrics to ensure it meets accuracy standards.
+
+| Feature                    | Action                              | Expected Result                                   | Actual Result               |
+|----------------------------|-------------------------------------|-------------------------------------------------- |-----------------------------|
+| Performance metrics display | Navigating to the performance page | Display of accuracy, precision, recall, and F1-score | Functions as expected    |
+| Visualizations             | Clicking on metric visualizations   | Graphs showing model performance over epochs     | Functions as expected        |
+| Confusion matrix           | Viewing the confusion matrix        | Correct visual representation of model misclassifications | Functions as expected |
+
 
 ## Credits 
 
@@ -260,11 +364,14 @@ Special thanks to Code Institute for the deployment template and Kaggle for the 
 
 ### Code
 
-- Part of the code is adapted from Code Institute’s walkthrough project.
+- Part of the code is adapted from Code Institute’s walkthrough project - Malaria Detection.
 
 ---
 
 ## Acknowledgements
 
 - Special thanks to those who provided support throughout this project.
+  - Community Sweden -Slack Channel for endless support
+  - Niclas Hughdahl - Troubleshooting buddy
+  - Mladen Djurdjevic - For keeping me alive during the development of this project
 
