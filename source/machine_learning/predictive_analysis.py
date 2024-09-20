@@ -10,32 +10,36 @@ from source.data_management import load_pkl_file
 from tensorflow.keras.models import load_model
 
 
-def plot_predictions_and_probabilities(predicted_probability, predicted_class):
+def plot_predictions_and_probabilities(pred_proba, pred_class):
     """
     Plot the prediction and probability result
     """
 
-    probability_per_class = pd.DataFrame(
-        data = [0, 0],
-        index = {'Cat': 0, 'Dog': 1}.keys(),
-        columns = ['Probability'],
-        dtype=np.float64,
+    # Class labels for CIFAR-10 dataset
+    class_labels = ['Airplane', 'Automobile', 'Bird', 'Cat', 'Deer', 'Dog', 'Frog', 'Horse', 'Ship', 'Truck']
+
+    # Create DataFrame with probabilities for all classes
+    prob_per_class = pd.DataFrame(
+        data=pred_proba,  # This will be a (10,) array, probabilities for all 10 classes
+        index=class_labels,
+        columns=['Probability']
     )
 
-    probability_per_class.loc[predicted_class] = predicted_probability
+    # Round probabilities for better readability
+    prob_per_class = prob_per_class.round(3)
+    
+    # Add a 'Diagnostic' column for easier plotting
+    prob_per_class['Diagnostic'] = prob_per_class.index
 
-    for x in probability_per_class.index.to_list():
-        if x not in predicted_class:
-            probability_per_class.loc[x] = 1 - predicted_probability
-
-    probability_per_class = probability_per_class.round(3)
-    probability_per_class['Diagnostic'] = probability_per_class.index
-
+    # Create the bar chart with Plotly
     fig = px.bar(
-        probability_per_class, x = 'Diagnostic',
-        y = probability_per_class['Probability'], range_y = [0, 1],
-        width = 600, height = 300, template = 'seaborn',
+        prob_per_class,
+        x='Diagnostic',
+        y='Probability',
+        range_y=[0, 1],
+        width=600, height=300, template='seaborn'
     )
+    
     st.plotly_chart(fig)
 
 
@@ -54,27 +58,22 @@ def resize_input_image(img, version):
     return resized_image
 
 
-def load_model_and_predict(image, version):
+def load_model_and_predict(my_image, version):
     """
     Load model and predict class on live images
     """
 
-    model = load_model(f'outputs/{version}/cats_vs_dogs_model.h5')
+    model = load_model(f'outputs/{version}/snapsort_model.h5')
 
-    predicted_probability = model.predict(image)[0, 0]
+    pred_proba = model.predict(my_image)[0]
 
-    # Get the target classes as a tuple stored in target_map (maps targets)
-    target_map = {value: key for key, value in {'Cat': 0, 'Dog': 1,}.items()}
+    target_map = {value: key for key, value in {'Airplane': 0, 'Automobile': 1, 'Bird': 2, 'Cat': 3, 'Deer': 4, 'Dog': 5, 'Frog': 6, 'Horse': 7, 'Ship': 8, 'Truck':9}.items()}
 
-    # Set the class that has higher than 0.5 probability as predicted class
-    predicted_class = target_map[predicted_probability > 0.5]
+    # Get the index of the class with the highest probability
+    pred_class_procent = np.argmax(pred_proba)
+    pred_class = target_map[pred_class_procent]
 
-    if predicted_class == target_map[0]:
-        predicted_probability = 1 - predicted_probability
-        st.success(f'The predictive analysis indicates that the image is\
-                   of a {predicted_class.lower()}.')
-    else:
-        st.error(f'The predictive analysis indicates that the image is\
-                   of a {predicted_class.lower()}.')
+    print("Predicted Probabilities:", pred_proba)
+    print("Predicted Class:", pred_class)
 
-    return predicted_probability, predicted_class
+    return pred_proba, pred_class
