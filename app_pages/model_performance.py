@@ -4,6 +4,7 @@ import pandas as pd
 from matplotlib.image import imread
 from source.machine_learning.evaluate_clf import load_test_evaluation
 
+
 def page_ml_performance_body():
 
     st.write('---')
