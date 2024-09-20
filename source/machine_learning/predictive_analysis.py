@@ -16,18 +16,29 @@ def plot_predictions_and_probabilities(pred_proba, pred_class):
     """
 
     # Class labels for CIFAR-10 dataset
-    class_labels = ['Airplane', 'Automobile', 'Bird', 'Cat', 'Deer', 'Dog', 'Frog', 'Horse', 'Ship', 'Truck']
+    class_labels = [
+        'Airplane',
+        'Automobile',
+        'Bird',
+        'Cat',
+        'Deer',
+        'Dog',
+        'Frog',
+        'Horse',
+        'Ship',
+        'Truck'
+    ]
 
     # Create DataFrame with probabilities for all classes
     prob_per_class = pd.DataFrame(
-        data=pred_proba,  # This will be a (10,) array, probabilities for all 10 classes
+        data=pred_proba,  # A (10,) array, probabilities for all 10 classes
         index=class_labels,
         columns=['Probability']
     )
 
     # Round probabilities for better readability
     prob_per_class = prob_per_class.round(3)
-    
+
     # Add a 'Diagnostic' column for easier plotting
     prob_per_class['Diagnostic'] = prob_per_class.index
 
@@ -39,7 +50,7 @@ def plot_predictions_and_probabilities(pred_proba, pred_class):
         range_y=[0, 1],
         width=600, height=300, template='seaborn'
     )
-    
+
     st.plotly_chart(fig)
 
 
@@ -67,7 +78,18 @@ def load_model_and_predict(my_image, version):
 
     pred_proba = model.predict(my_image)[0]
 
-    target_map = {value: key for key, value in {'Airplane': 0, 'Automobile': 1, 'Bird': 2, 'Cat': 3, 'Deer': 4, 'Dog': 5, 'Frog': 6, 'Horse': 7, 'Ship': 8, 'Truck':9}.items()}
+    target_map = {value: key for key, value in {
+        'Airplane': 0,
+        'Automobile': 1,
+        'Bird': 2,
+        'Cat': 3,
+        'Deer': 4,
+        'Dog': 5,
+        'Frog': 6,
+        'Horse': 7,
+        'Ship': 8,
+        'Truck': 9}.items()
+    }
 
     # Get the index of the class with the highest probability
     pred_class_procent = np.argmax(pred_proba)
