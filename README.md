@@ -246,6 +246,15 @@ All user stories have been successfully implemented, and the project is complete
 
 There are no known unfixed bugs at this time.
 
+### Issues
+
+- During development, several compatibility challenges were encountered due to changes in library versions and syntax updates.
+- These issues included dependency conflicts between different libraries, which often led to errors.
+- To resolve this, I opted to use the requirements document from the CI Malaria Detector walkthrough project.
+- This ensured the correct versions of libraries and dependencies were installed, providing a stable and compatible environment for the project.
+
+![Syntax error](docs/syntax_error.png)
+
 [Back to top](#SNAPSORT-AI)
 
 ---
@@ -359,6 +368,10 @@ Type git clone, and then paste the previously copied URL to create the clone
 | Visualizations             | Clicking on metric visualizations   | Graphs showing model performance over epochs     | Functions as expected        |
 | Confusion matrix           | Viewing the confusion matrix        | Correct visual representation of model misclassifications | Functions as expected |
 
+
+### Validation
+
+- For the Streamlit app pages and source code files, I used the [CI Python Linter](https://pep8ci.herokuapp.com/).
 
 ## Credits 
 
