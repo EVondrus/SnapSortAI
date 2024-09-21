@@ -44,7 +44,7 @@ def page_object_detector_body():
             st.image(img_pil, caption=f'Image size: {img_array.shape[1]} px \
     width x {img_array.shape[0]} px height')
 
-            version = 'v2'
+            version = 'v4'
 
             resized_img = resize_input_image(img=img_pil, version=version)
             predict_probability, predict_class = load_model_and_predict(

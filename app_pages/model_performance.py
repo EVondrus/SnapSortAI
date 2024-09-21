@@ -11,7 +11,7 @@ def page_ml_performance_body():
 
     st.header('**ML Performance Metrics**')
 
-    version = 'v3'
+    version = 'v4'
 
     st.info("Labels Frequencies in the dataset")
 
