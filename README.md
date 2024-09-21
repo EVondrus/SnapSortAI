@@ -265,7 +265,37 @@ All user stories have been successfully implemented, and the project is complete
 
 ## Unfixed Bugs
 
-There are no known unfixed bugs at this time.
+### Bug Report: `StreamlitAPIException` - `set_page_config()` Issue
+
+**Description:**
+The following error occurs intermittently when launching the app:
+- StreamlitAPIException: set_page_config() can only be called once per app, and must be called as the first Streamlit command in your script
+  - This exception appears even though the script is configured according to the documentation. The issue seems to arise occasionally upon entering the app, and clearing the cache and rerunning it resolves the problem temporarily.
+
+- File "/app/app.py", line 11, in <module> app = MultiPage(app_name="SnapSort AI") # Create an instance of the app File "/app/app_pages/multipage.py", line 24, in init st.set_page_config(
+
+**Steps to Reproduce:**
+1. Run the app from the main entry point.
+2. Occasionally, the `StreamlitAPIException` is raised.
+3. Clear the cache and rerun the app navigate to summary page; the error disappears temporarily.
+
+**Expected Behavior:**
+The app should run without errors, with `st.set_page_config()` being executed correctly as the first Streamlit command.
+
+**Investigation:**
+- The `set_page_config()` function is confirmed to be called as the first command in the script, as per the Streamlit documentation.
+- The error seems to occur sporadically, possibly due to caching issues or how the script is being loaded.
+
+**Temporary Workaround:**
+- Clearing the cache and rerunning the app temporarily resolves the issue, but this is not an ideal long-term solution.
+
+**Suggested Fix:**
+- Double-check that no other `set_page_config()` calls are being made elsewhere in the script or other modules.
+- Ensure that no dependencies or async operations are delaying the execution of `set_page_config()` as the first command.
+- Review the settings and Streamlit documentation for any caching-related configurations that might affect script execution order.
+
+For more detailed information, refer to the [Streamlit docs](https://docs.streamlit.io/).
+
 
 ### Issues
 
