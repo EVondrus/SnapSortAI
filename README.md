@@ -3,7 +3,8 @@
 **A Data Science and Machine Learning project developed as part of a course in Predictive Analytics, my final project at Code Institute.**
 
 ---
-
+![Dataset images with labels](docs/img_label_collage.png)
+Live link to: [SnapSort AI](https://snapsortai-6a51de21efef.herokuapp.com/)
 ## Project Overview
 
 A client in e-commerce seeks a machine learning solution to automate product image categorization, currently performed manually. The project follows two phases:
@@ -24,7 +25,6 @@ The CIFAR-10 dataset consists of 60,000 images across 10 categories, and the goa
 
 This subset balances training efficiency and performance while adhering to GitHub's file size limits.
 
-![Dataset images with labels](docs/img_label_collage.png)
 ![Cifar10 subset](docs/distribution_plot.png)
 
 ---
@@ -60,14 +60,13 @@ This subset balances training efficiency and performance while adhering to GitHu
 - **Accuracy**: Overall model correctness.
 - **Precision & Recall**: Precision indicates correct predictions, while recall shows the number of true positives.
 - **F1-Score**: Combines precision and recall into a single metric for balanced evaluation.
-- **Confusion Matrix**: Visualizes misclassifications.
 
 - **Comparison**: Models with and without data augmentation and regularization will be compared.
 
 ### Success Metrics
 
 - **Target Accuracy**: At least 70% accuracy on the test set.
-- **Data Augmentation Impact**: Expect at least a 5% improvement in accuracy or F1-score with augmentation.
+- **Data Augmentation Impact**: Expect at least a 5% improvement in accuracy.
 
 ### Implications
 
@@ -111,7 +110,7 @@ Validating these hypotheses will confirm the efficacy of combining CNNs with adv
 ### CNN Architecture
 - **Input**: 32x32 RGB images.
 - **Layers**: Convolutional layers with ReLU activation, followed by max-pooling and dense layers.
-- **Regularization**: Dropout and batch normalization to prevent overfitting.
+- **Regularization**: Dropout and batch normalization and L2 to prevent overfitting.
 
 ### Preprocessing
 - **Rescaling**: Images normalized to [0, 1].
@@ -178,6 +177,8 @@ Validating these hypotheses will confirm the efficacy of combining CNNs with adv
   <summary>4th Page - Model Performance</summary>
   <br>
   Details the model's performance metrics:
+
+    This image doesn't reflect the actual model performance
 
   <br>
   
