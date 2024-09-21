@@ -55,13 +55,21 @@ This subset balances training efficiency and performance while adhering to GitHu
 - **Hypothesis 3**: 
   - Data augmentation (e.g., rotating, flipping, zooming) will enhance model accuracy by at least 5%.
 
-### Validation Process
+## Validation Process
 
-- **Accuracy**: Overall model correctness.
-- **Precision & Recall**: Precision indicates correct predictions, while recall shows the number of true positives.
-- **F1-Score**: Combines precision and recall into a single metric for balanced evaluation.
+### Accuracy
 
-- **Comparison**: Models with and without data augmentation and regularization will be compared.
+- **Overall Model Correctness**: The primary validation metric used for this model is accuracy, which measures the ratio of correctly predicted instances to the total instances.
+
+### Future Considerations
+
+While the current validation focuses on accuracy, incorporating additional metrics such as precision, recall, and F1 score could provide deeper insights into model performance:
+
+- **Precision**: Indicates the correctness of positive predictions.
+- **Recall**: Measures how well the model identifies true positive instances.
+- **F1 Score**: Balances precision and recall into a single metric, especially useful for imbalanced datasets.
+
+Implementing these metrics in future iterations will enhance the model evaluation and help guide improvements.
 
 ### Success Metrics
 
@@ -108,21 +116,33 @@ Validating these hypotheses will confirm the efficacy of combining CNNs with adv
 ## Model Development
 
 ### CNN Architecture
+
 - **Input**: 32x32 RGB images.
-- **Layers**: Convolutional layers with ReLU activation, followed by max-pooling and dense layers.
-- **Regularization**: Dropout and batch normalization and L2 to prevent overfitting.
+- **Layers**:
+  - **Convolutional Layers**: 
+    - 3 layers with 64, 128, and 256 filters, respectively, each using ReLU activation and padding set to 'same'.
+    - Each convolutional layer is followed by Batch Normalization to stabilize learning and Max Pooling for downsampling.
+  - **Flattening**: Flattens the 3D output to 1D.
+  - **Dense Layers**: 
+    - Two fully connected layers with 512 and 256 neurons, respectively, both using ReLU activation and L2 regularization to mitigate overfitting.
+    - Includes Dropout layers (0.5) for further regularization.
+  - **Output Layer**: A final Dense layer with 10 neurons (softmax activation) to classify the 10 categories.
 
 ### Preprocessing
-- **Rescaling**: Images normalized to [0, 1].
-- **Data Augmentation**: Rotations, flips, and zooms applied for training robustness.
+
+- **Rescaling**: Images are normalized to the range [0, 1].
+- **Data Augmentation**: 
+  - When enabled, applies rotation, width/height shifts, zooms, and horizontal flips to enhance training robustness.
 
 ### Compilation & Training
-- **Optimizer**: Adam.
-- **Loss Function**: Categorical cross-entropy.
-- **Metrics**: Accuracy.
-- **Training**: Early stopping and checkpointing mechanisms employed.
 
-> **Model Diagram**: ![Model Development Diagram](link-to-diagram-image)
+- **Optimizer**: Adam optimizer is used for efficient training.
+- **Loss Function**: Categorical cross-entropy is employed to handle multi-class classification.
+- **Metrics**: Accuracy is tracked during training.
+- **Training**: Implemented early stopping and checkpointing mechanisms to optimize the training process and prevent overfitting.
+
+> **Model Diagram**: ![Model Development Diagram](docs/snapsort_model_diagram.png)
+
 
 [Back to top](#snapsort-ai)
 
