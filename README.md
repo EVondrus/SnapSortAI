@@ -303,6 +303,7 @@ For more detailed information, refer to the [Streamlit docs](https://docs.stream
 - These issues included dependency conflicts between different libraries, which often led to errors.
 - To resolve this, I opted to use the requirements document from the CI Malaria Detector walkthrough project.
 - This ensured the correct versions of libraries and dependencies were installed, providing a stable and compatible environment for the project.
+- Heroku Issues - When I tried to deploy the working version of the Streamlit app on Heroku, there were issues with the size of the repo. I added to .slugignore the list of directories that weren't necessary for the execution of the app, but the slug file is still over the limit size and can slow down the deployment or lead to a failure due to Heroku's slug size limit."
 
 ![Syntax error](docs/syntax_error.png)
 
