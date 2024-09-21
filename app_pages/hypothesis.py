@@ -28,7 +28,7 @@ issues, guiding preprocessing steps to improve model training.\
     st.write('---')
 
     st.info('''
-**Hypothesis 2:** A basic CNN will achieve at least\
+**Hypothesis 2:** The CNN model will achieve at least\
 70% classification accuracy.
 ''')
 
