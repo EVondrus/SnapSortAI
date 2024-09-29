@@ -4,7 +4,9 @@
 
 ---
 ![Dataset images with labels](docs/img_label_collage.png)
-Live link to: [SnapSort AI](https://snapsortai-6a51de21efef.herokuapp.com/)
+~~Live link to: [SnapSort AI](https://snapsortai-6a51de21efef.herokuapp.com/)~~
+Live link to corrected version: [SnapSort AI](https://snapsortai-one-d41485f6eb00.herokuapp.com/)
+
 ## Project Overview
 
 A client in e-commerce seeks a machine learning solution to automate product image categorization, currently performed manually. The project follows two phases:
@@ -265,6 +267,18 @@ All user stories have been successfully implemented, and the project is complete
 
 ## Unfixed Bugs
 
+### Bug Report: Incorrect Folder for `image_shape.pkl`
+
+**Summary**:  
+The initial deployment of the SnapSort AI application encountered issues due to referencing the incorrect folder for the `image_shape.pkl` file. This mistake prevented the model from functioning correctly.
+
+**Details**:  
+- **Issue**: The project was deployed using the wrong folder path for `image_shape.pkl`. The incorrect folder used was `v7`, while the correct folder should have been `v1`.
+- **Impact**: Due to this error, the model failed to load, leading to overall malfunction.
+- **Branch Correction**: The issue has been addressed in a new branch [corrected-version](https://github.com/EVondrus/SnapSortAI/tree/corrected-version).
+- **Repository Update**: The project has been cloned into a new repository with the corrected versions: [SnapSortAI-corrected](https://github.com/EVondrus/SnapSortAI-corrected).
+- **Deployment**: The corrected version has been successfully deployed to a new Heroku app: [SnapSort AI - One](https://snapsortai-one-d41485f6eb00.herokuapp.com/).
+
 ### Bug Report: `StreamlitAPIException` - `set_page_config()` Issue
 
 **Description:**
@@ -295,7 +309,6 @@ The app should run without errors, with `st.set_page_config()` being executed co
 - Review the settings and Streamlit documentation for any caching-related configurations that might affect script execution order.
 
 For more detailed information, refer to the [Streamlit docs](https://docs.streamlit.io/).
-
 
 ### Issues
 
