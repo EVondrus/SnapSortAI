@@ -61,9 +61,8 @@ def resize_input_image(img, version):
     # Convert to RGB before resizing
     img = img.convert('RGB')
 
-    image_shape = load_pkl_file(file_path=f"outputs/{version}/image_shape.pkl")
+    image_shape = load_pkl_file(file_path=f"outputs/v1/image_shape.pkl")
     img_resized = img.resize((image_shape[1], image_shape[0]), Image.LANCZOS)
-
     resized_image = np.expand_dims(img_resized, axis=0)/255
 
     return resized_image

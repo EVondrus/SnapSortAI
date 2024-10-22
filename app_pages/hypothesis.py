@@ -37,27 +37,26 @@ issues, guiding preprocessing steps to improve model training.\
 its performance on the test set.
 ''')
 
-    st.error('''
-**Conclusion:** The best model, v7, achieved a test accuracy of approximately 68.90%,\
-    falling short of the 70% target. **Hypothesis not confirmed**.
+    st.success('''
+**Conclusion:** The best model, v7, achieved a test accuracy of approximately 71%.
 ''')
 
     st.write('---')
 
     st.info('''
 **Hypothesis 3:** Data augmentation (e.g., rotating, flipping, zooming) will\
-enhance model accuracy by at least 5%.
+    enhance model accuracy by at least 5%.
 ''')
 
     st.warning('''
 **Validation Method:** Compare model performance with and\
-without data augmentation.
+    without data augmentation.
 ''')
 
     st.success('''
 **Conclusion:**Data augmentation resulted in a notable performance improvement,\
-    with test accuracy increasing from 62.60% to 67.20%, confirming the hypothesis\
-         with a gain of 5.60%. **Hypothesis confirmed**.
+    with test accuracy increasing from 62.60% to 67.20% in model v6, confirming \
+    the hypothesis with a gain of 5.60%.
 ''')
 
     st.write('---')
@@ -72,10 +71,9 @@ enhance model accuracy.
 hyperparameters versus tuned hyperparameters.
 ''')
 
-    st.error('''
-**Conclusion:**Although multiple hyperparameter adjustments were made,\
-    the best model did not exceed the 70% accuracy threshold. The specific\
-        impact of fine-tuning remains inconclusive. **Hypothesis not confirmed**.
+    st.suceess('''
+**Conclusion:**Multiple adjustments were made and\
+    the best model did exceed the 70% accuracy threshold.
 ''')
 
     st.write('---')

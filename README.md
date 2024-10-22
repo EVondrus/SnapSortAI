@@ -100,12 +100,12 @@ Validating these hypotheses will confirm the efficacy of combining CNNs with adv
 
 ### 3. Performance Metrics
 - **Business Requirement:** Achieve high model accuracy.
-- **ML Task:** Evaluate the model using accuracy, precision, recall, F1 score, and a confusion matrix.
-- **Rationale:** These metrics provide a comprehensive understanding of the model’s performance. Visualizations like accuracy/loss graphs and confusion matrices make it easier to track progress and identify areas for improvement.
+- **ML Task:** Evaluate the model using loss, accuracy and probability.
+- **Rationale:** These metrics provide a comprehensive understanding of the model’s performance. Visualizations like accuracy/loss graphs make it easier to track progress and identify areas for improvement.
 
 ### 4. Interpretability
 - **Business Requirement:** Offer insights into the model’s predictions.
-- **ML Task:** Generate interpretable visualizations like confusion matrices, class activation maps (CAM), and predicted vs. actual results.
+- **ML Task:** Generate interpretable visualizations like bar plots, and predicted vs. actual results.
 - **Rationale:** Visualization tools increase transparency, allowing clients to understand how the model makes decisions. This builds trust in the AI system, ensuring that predictions are not just accurate but also explainable.
 
 ### 5. Efficiency
@@ -384,7 +384,7 @@ Type git clone, and then paste the previously copied URL to create the clone
 1. As a client, I want an interactive dashboard for easy data visualization.
 
 | Feature                 | Action                            | Expected Result                                      | Actual Result              |
-|-------------------------|-----------------------------------|-----------------------------------------------------|----------------------------|
+|-------------------------|-----------------------------------|----------------------------------------------------- |----------------------------|
 | Navigation bar          | Selecting buttons in the side Menu| Selected page displayed with correct information     | Functions as expected       |
 
 **Data Visualizer Page**  
@@ -392,16 +392,16 @@ Type git clone, and then paste the previously copied URL to create the clone
 
 | Feature                    | Action                              | Expected Result                                   | Actual Result               |
 |----------------------------|-------------------------------------|-------------------------------------------------- |-----------------------------|
-| Dataset summary            | Viewing the dataset summary         | Summary of dataset displayed correctly            | Functions as expected       |
-| Class distribution graph   | Clicking on the graph option        | Class distribution graph is rendered              | Functions as expected       |
+| Dataset summary            | Viewing img dataset summary         | Display mean and std deviation of img             | Functions as expected       |
+| Image collage              | Chose categories and display a collage | Display images of the chosen classes           | Functions as expected       |
 
-**Model Performance Page**  
+**Model Performance Page** 
 - As a client, I want to see the model’s performance metrics.
 
 | Feature                    | Action                              | Expected Result                                   | Actual Result               |
 |----------------------------|-------------------------------------|-------------------------------------------------- |-----------------------------|
-| Accuracy graph             | Clicking on the accuracy graph      | Accuracy over epochs graph is displayed           | Functions as expected       |
-| Confusion matrix           | Clicking on the confusion matrix    | Confusion matrix visualized correctly             | Functions as expected       |
+| Accuracy and loss graph    | View the accuracy and loss graph    | Accuracy and loss over epochs graph is displayed  | Functions as expected       |
+| Image distribution graph   | View image distribution in datasets | Image distribution graph is rendered              | Functions as expected       |
 
 ---
 
@@ -425,13 +425,12 @@ Type git clone, and then paste the previously copied URL to create the clone
 **Business Requirement 3: Performance Evaluation**  
 
 **Model Evaluation Page**  
-- As a client, I want to assess the model's performance metrics to ensure it meets accuracy standards.
+- As a client, I want to assess the model's prediction probability.
 
 | Feature                    | Action                              | Expected Result                                   | Actual Result               |
 |----------------------------|-------------------------------------|-------------------------------------------------- |-----------------------------|
-| Performance metrics display | Navigating to the performance page | Display of accuracy, precision, recall, and F1-score | Functions as expected    |
-| Visualizations             | Clicking on metric visualizations   | Graphs showing model performance over epochs     | Functions as expected        |
-| Confusion matrix           | Viewing the confusion matrix        | Correct visual representation of model misclassifications | Functions as expected |
+| Img Probability graph      | Clicking on the bars in the plot    | Visualized correctly                              | Functions as expected       |
+
 
 
 ### Validation
