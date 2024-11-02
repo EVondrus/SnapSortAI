@@ -16,7 +16,7 @@ def page_ml_performance_body():
     st.info("Labels Frequencies in the dataset")
 
     labels_distribution = plt.imread(
-        f"outputs/{version}/distribution_plot.png")
+        f"outputs/v1/distribution_plot.png")
     st.image(labels_distribution,
              caption='Labels Distribution on Train, Validation and Test Sets')
 
@@ -30,6 +30,7 @@ def page_ml_performance_body():
     with col2:
         model_loss = plt.imread(f"outputs/{version}/model_training_losses.png")
         st.image(model_loss, caption='Model Training Losses')
+
     st.write("---")
 
     st.warning("Generalised performance on the test set")
