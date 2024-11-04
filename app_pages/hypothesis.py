@@ -71,7 +71,7 @@ enhance model accuracy.
 hyperparameters versus tuned hyperparameters.
 ''')
 
-    st.suceess('''
+    st.success('''
 **Conclusion:**Multiple adjustments were made and\
     the best model did exceed the 70% accuracy threshold.
 ''')
