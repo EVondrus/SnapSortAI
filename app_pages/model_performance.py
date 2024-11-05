@@ -45,83 +45,62 @@ def page_ml_performance_body():
     st.write("---")
 
     st.success("Confusion Matrix")
-    # Load model
-    model = load_model(f'outputs/{version}/snapsort_model.h5')
-
-    image_shape = load_pkl_file(file_path=f"outputs/v1/image_shape.pkl")
-
-    class_names = [
-        'airplane',
-        'automobile',
-        'bird',
-        'cat',
-        'deer',
-        'dog',
-        'frog',
-        'horse',
-        'ship',
-        'truck'
-    ]
-
-    test_dataset = image_dataset_from_directory(
-        f"inputs/cifar10_dataset_small/test",
-        labels='inferred',  # Automatically infer labels from folder names
-        label_mode='categorical',  # Output labels as one-hot encoded vectors
-        image_size=image_shape[:2],
-        interpolation='nearest',
-        batch_size=32,
-        shuffle=False
-    )
-
-    # Convert test_dataset to NumPy arrays
-    test_images = np.concatenate([batch[0] for batch in test_dataset.as_numpy_iterator()])
-    test_labels = np.concatenate([batch[1] for batch in test_dataset.as_numpy_iterator()])
-
-    # Predict class labels for the test set
-    predictions = np.argmax(model.predict(test_images), axis=1)
-
-    # Create confusion matrix
-    cm = confusion_matrix(np.argmax(test_labels, axis=1), predictions)
-
-    # Plot the confusion matrix using seaborn
-    plt.figure(figsize=(10, 8))
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=class_names, yticklabels=class_names)
-    plt.xlabel("Predicted Class")
-    plt.ylabel("True Class")
-    plt.title("Confusion Matrix for Test Set")
-    plt.tight_layout()
-
-    st.pyplot(fig=plt)
+    confusion_matrix_image = plt.imread(f"outputs/{version}/confusion_matrix.png")
+    st.image(confusion_matrix_image, caption="Confusion Matrix", use_column_width=True)
 
     st.subheader("Confusion Matrix Explanation")
     st.write(
         """
-        This confusion matrix shows how well our model is doing at classifying different types of objects in the test set. 
-        Each row represents the actual category of an image, and each column represents the category that our model predicted. 
-        The numbers in each cell show the number of times the model predicted a specific class when the actual class was different.
-        
-        For example, the model correctly classified 91 out of 100 automobile images. 
-        But, it often misclassified airplane images as automobiles.
-        
-        This matrix tells us that the model is doing well with some categories, 
-        but it struggles to distinguish between others, especially those that share visual similarities (like birds and horses). 
-        We need to focus on improving the model's accuracy in these areas.
+        **Strong Performances**: Our model shows strong accuracy for recognizing 
+        'automobile' (81 out of 100 correct), 'frog' (89 out of 100 correct), 
+        and 'ship' (84 out of 100 correct).
+
+        **Challenges**: The model faces challenges with some classes, particularly:
+
+        - **Airplane**: The model often misclassifies 'airplane' as 'automobile' 
+        (5 out of 100) and 'ship' (24 out of 100).
+        - **Bird**: There's a significant amount of confusion between birds and 
+        horses (12 out of 100). Birds are also frequently misclassified as 
+        ships (26 out of 100).
+        - **Cat**: The model struggles to distinguish cats from dogs (26 out of 100).
+        - **Deer**: Deer images are consistently misclassified as 'dog' (65 out 
+        of 100), 'ship' (37 out of 100), and 'truck' (12 out of 100).
+        - **Horse**: Horses are often confused with birds (10 out of 100) and 
+        ships (35 out of 100).
+        - **Truck**: The model has difficulty recognizing trucks, misclassifying 
+        them as 'automobile' (7 out of 100) and 'ship' (11 out of 100).
+
+        **Key Observations**:
+
+        - **Visual Similarities**: Our model seems to struggle with categories 
+        that share visual similarities, a common challenge in image classification. 
+        The model often mistakes airplanes for automobiles, birds for horses, 
+        and deer for dogs.
+        - **Class-Specific Errors**: The model is particularly struggling with 
+        deer images, which are being misclassified into various other categories.
+
+        **Next Steps**:
+
+        Based on these findings, we'll prioritize improving our model's accuracy 
+        by focusing on these key areas:
+
+        - **Data Augmentation**: To combat overfitting, we will implement data 
+        augmentation techniques to generate variations of our training images. 
+        This will help our model learn more robust features and generalize better.
+        - **Model Complexity**: We will explore more complex model architectures. 
+        This could involve using a pre-trained model or adding more convolutional 
+        layers to our existing model.
+        - **Class Weights**: We'll investigate the use of class weights during 
+        training to give more importance to the loss for classes that are 
+        challenging for the model, such as 'deer.'
+        - **Hyperparameter Tuning**: We will conduct systematic hyperparameter 
+        tuning to find the best combination of settings for our model 
+        architecture and training data.
         """
     )
 
-    st.write("---")
-
-    st.subheader("Classification Report")
-    report = classification_report(
-    np.argmax(test_labels, axis=1), 
-    predictions, 
-    target_names=class_names, 
-    output_dict=True,
-    zero_division=1
-)
-    report_df = pd.DataFrame(report).transpose()
-    st.dataframe(report_df)
 
     st.write("---")
+
 
 
