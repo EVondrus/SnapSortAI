@@ -19,13 +19,19 @@ The CIFAR-10 dataset consists of 60,000 images across 10 categories, and the goa
 
 ## Dataset Content
 
-- **Source**: [CIFAR-10 dataset from Kaggle](https://www.kaggle.com/competitions/cifar-10).
+- **Source**: CIFAR-10 dataset from Kaggle.
 - **Image Size**: 32x32 pixels in RGB format.
-- **Image Uniformity**: Images within each category are not perfectly uniform. 
-- **Subset**: 5,000 images for training (70% train, 10% validation, 20% test). 
+- **Image Uniformity**: Images within each category are not perfectly uniform. For example, there is a significant variation in backgrounds, angles, and lighting conditions within each class. This presented challenges for the model in recognizing consistent features, which is crucial for applying data science principles to image classification.
+- **Subset:** A subset of 5,000 images was selected for training, testing, and validation due to limitations in storage and processing time for efficient deployment.
+
+  This subset is split as follows:
+  - **Train set:** 70% of the images (350 per class).
+  - **Validation set:** 10% of the images (50 per class).
+  - **Test set:** 20% of the images (100 per class).
+
 - **Categories**: 10 classes (e.g., airplanes, cars, birds, frogs).
 
-This subset balances training efficiency and performance while adhering to GitHub's file size limits.
+This subset balances training efficiency and performance while adhering to GitHub's file size limits. This analysis provides critical insights into the structure and characteristics of the CIFAR-10 dataset
 
 ![Cifar10 subset](docs/distribution_plot.png)
 
