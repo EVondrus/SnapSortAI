@@ -2,6 +2,7 @@ import streamlit as st
 
 
 def page_summary_body():
+    st.write('---')
     st.write("### Project Summary")
 
     st.info(
@@ -72,3 +73,5 @@ def page_summary_body():
         - The model should achieve a minimum of 70% accuracy on the test set. 
         """
     )
+
+    st.write('---')

@@ -62,3 +62,5 @@ def page_object_detector_body():
             st.table(df_report)
             st.markdown(download_dataframe_as_csv(df_report),
                         unsafe_allow_html=True)
+
+    st.write('---')

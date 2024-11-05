@@ -157,3 +157,4 @@ def image_montage(image_dir, labels, nrows, figsize):
 
 
 page_visualizer_body()
+
