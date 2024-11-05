@@ -25,13 +25,25 @@ def page_summary_body():
     )
 
     # Dataset Content
+    st.write("### Dataset")
     st.info(
         """
-        - **Source**:[CIFAR-10 dataset from Kaggle](https://www.kaggle.com/competitions/cifar-10).
-        - **Image Size**: 32x32 pixels in RGB format.
-        - **Image Uniformity**: Images within each category are not perfectly uniform. 
-        - **Subset**: 5,000 images for training (70% train, 10% validation, 20% test). 
-        - **Categories**: 10 classes (e.g., airplanes, cars, birds, frogs).
+        - **Source:** [CIFAR-10 dataset from Kaggle](https://www.kaggle.com/competitions/cifar-10)
+        - **Image Size:** 32x32 pixels in RGB format.
+        - **Image Uniformity:** Images within each category are not
+            perfectly uniform. 
+            - Examples of variations include:
+                * **Backgrounds:** Images have diverse backgrounds. 
+                * **Angles:** Objects are captured at various angles. 
+                * **Lighting:** Lighting conditions across images vary.
+        - **Subset:** A subset of 5,000 images was selected for training,
+            testing, and validation due to limitations in storage and processing
+            time for efficient deployment.
+            This subset is split as follows:
+            - **Train set:** 70% of the images (350 per class).
+            - **Validation set:** 10% of the images (50 per class).
+            - **Test set:** 20% of the images (100 per class).
+        - **Categories:** 10 classes (e.g., airplanes, cars, birds, frogs).
 
         This subset balances training efficiency and performance while adhering to GitHub's file size limits.
         """
@@ -44,6 +56,7 @@ def page_summary_body():
     )
 
     # Business Requirements
+    st.write("### Business Requirements")
     st.success(
         """
         1. **Dataset Analysis**:
