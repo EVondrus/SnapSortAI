@@ -4,7 +4,7 @@
 
 ---
 ![Dataset images with labels](docs/img_label_collage.png)
-~~Live link to: [SnapSort AI](https://snapsortai-6a51de21efef.herokuapp.com/)~~
+Live link to: [SnapSort AI](https://snapsortai-6a51de21efef.herokuapp.com/)
 
 ## Project Overview
 
