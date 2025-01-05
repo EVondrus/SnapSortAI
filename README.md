@@ -4,7 +4,12 @@
 
 ---
 ![Dataset images with labels](docs/img_label_collage.png)
-Live link to: [SnapSort AI](https://snapsortai-6a51de21efef.herokuapp.com/)
+
+<br>
+
+**Live link to:** [SnapSort AI](https://snapsortai-6a51de21efef.herokuapp.com/)
+
+⚠️ Note: The app may take some time to load. Once it loads, please use the menu on the right side to rerun the app for optimal performance!
 
 ## Project Overview
 
